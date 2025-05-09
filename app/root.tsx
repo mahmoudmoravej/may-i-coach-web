@@ -1,3 +1,5 @@
+import { I18nextProvider } from "react-i18next";
+import { i18n } from ".././i18n";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import stylesheet from "~/tailwind.css?url";
 import {
@@ -21,22 +23,24 @@ export const links: LinksFunction = () => [
 ];
 export default function App() {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <MuiMeta />
-        <Links />
-      </head>
-      <body>
-        <MuiDocument>
-          <Outlet />
-        </MuiDocument>
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+    <I18nextProvider i18n={i18n}>
+      <html lang="en">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <MuiMeta />
+          <Links />
+        </head>
+        <body>
+          <MuiDocument>
+            <Outlet />
+          </MuiDocument>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    </I18nextProvider>
   );
 }
 
