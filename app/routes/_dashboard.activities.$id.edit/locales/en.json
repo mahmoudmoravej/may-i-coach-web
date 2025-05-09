@@ -1,0 +1,5 @@
+{
+  "loading-message": "Loading...",
+  "no-data-message": "No data",
+  "activity-title-message": "Activity: {{title}}"
+}

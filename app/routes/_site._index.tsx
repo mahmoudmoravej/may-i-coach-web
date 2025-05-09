@@ -1,3 +1,4 @@
+import { useTranslation, Trans } from "react-i18next";
 import React from "react";
 
 import * as material from "@material-tailwind/react";
@@ -20,6 +21,8 @@ import { FeatureCard, TeamCard } from "~/widgets/cards";
 import { teamData, featuresData, contactData } from "~/routesData";
 
 export function Home() {
+  const { t } = useTranslation("routes");
+
   return (
     <>
       <div className="relative flex h-screen content-center items-center justify-center pb-32 pt-16">
@@ -29,7 +32,7 @@ export function Home() {
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
               <img
-                alt="may I coach"
+                alt={t("may-i-coach")}
                 src="/images/mayIcoach384.png"
                 className="mx-auto h-96 w-96"
               />
@@ -38,12 +41,10 @@ export function Home() {
                 color="white"
                 className="mb-6 font-black"
               >
-                AI as your coaching assistant!
+                {t("ai-coaching-assistant")}
               </Typography>
               <Typography variant="lead" color="white" className="opacity-80">
-                This is a simple example of a Landing Page you can build using
-                Material Tailwind. It features multiple components based on the
-                Tailwind CSS and Material Design by Google.
+                {t("landing-page-example")}
               </Typography>
             </div>
           </div>
@@ -74,25 +75,21 @@ export function Home() {
                 className="mb-3 font-bold"
                 color="blue-gray"
               >
-                Working with us is a pleasure
+                {t("working-with-us")}
               </Typography>
               <Typography className="mb-8 font-normal text-blue-gray-500">
-                Don&apos;t let your uses guess by attaching tooltips and popoves
-                to any element. Just make sure you enable them first via
-                JavaScript.
+                {t("tooltips-and-popovers")}
                 <br />
                 <br />
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you&apos;re good
-                to go. Just make sure you enable them first via JavaScript.
+                {t("pre-built-pages")}
               </Typography>
-              <Button variant="filled">read more</Button>
+              <Button variant="filled">{t("read-more")}</Button>
             </div>
             <div className="mx-auto mt-24 flex w-full justify-center px-4 md:w-4/12 lg:mt-0">
               <Card className="rounded-lg border shadow-lg shadow-gray-500/10">
                 <CardHeader floated={false} className="relative h-56">
                   <img
-                    alt="Card"
+                    alt={t("card")}
                     src="/images/teamwork.png"
                     className="h-full w-full"
                   />
@@ -103,19 +100,17 @@ export function Home() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    Enterprise
+                    {t("enterprise")}
                   </Typography>
                   <Typography
                     variant="h5"
                     color="blue-gray"
                     className="mb-3 mt-2 font-bold"
                   >
-                    Top Notch Services
+                    {t("top-notch-services")}
                   </Typography>
                   <Typography className="font-normal text-blue-gray-500">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
+                    {t("arctic-ocean-ice")}
                   </Typography>
                 </CardBody>
               </Card>
@@ -126,9 +121,7 @@ export function Home() {
       <section className="px-4 pb-48 pt-20">
         <div className="container mx-auto">
           <PageTitle section="Our Team" heading="Here are our heroes">
-            According to the National Oceanic and Atmospheric Administration,
-            Ted, Scambos, NSIDClead scentist, puts the potentially record
-            maximum.
+            {t("record-max-sea-ice")}
           </PageTitle>
           <div className="mt-24 grid grid-cols-1 gap-12 gap-x-24 md:grid-cols-2 xl:grid-cols-4">
             {teamData.map(({ img, name, position, socials }) => (
@@ -154,9 +147,7 @@ export function Home() {
       <section className="relative bg-white px-4 py-24">
         <div className="container mx-auto">
           <PageTitle section="Co-Working" heading="Build something">
-            Put the potentially record low maximum sea ice extent tihs year down
-            to low ice. According to the National Oceanic and Atmospheric
-            Administration, Ted, Scambos.
+            {t("record-min-sea-ice")}
           </PageTitle>
           <div className="mx-auto mb-48 mt-20 grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
             {contactData.map(({ title, icon, description }) => (
@@ -181,24 +172,29 @@ export function Home() {
             ))}
           </div>
           <PageTitle section="Contact Us" heading="Want to work with us?">
-            Complete this form and we will get back to you in 24 hours.
+            {t("contact-form-response")}
           </PageTitle>
           <form className="mx-auto mt-12 w-full lg:w-5/12">
             <div className="mb-8 flex gap-8">
               <Input
                 variant="outlined"
                 size="lg"
-                label="Full Name"
+                label={t("full-name")}
                 crossOrigin={undefined}
               />
               <Input
                 variant="outlined"
                 size="lg"
-                label="Email Address"
+                label={t("email-address")}
                 crossOrigin={undefined}
               />
             </div>
-            <Textarea variant="outlined" size="lg" label="Message" rows={8} />
+            <Textarea
+              variant="outlined"
+              size="lg"
+              label={t("message")}
+              rows={8}
+            />
             <Checkbox
               label={
                 <Typography
@@ -206,20 +202,24 @@ export function Home() {
                   color="gray"
                   className="flex items-center font-normal"
                 >
-                  I agree the
-                  <a
-                    href="/"
-                    className="font-medium transition-colors hover:text-gray-900"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
+                  <Trans
+                    i18nKey="terms-and-conditions-agreement"
+                    components={{
+                      "0": (
+                        <a
+                          href="/"
+                          className="font-medium transition-colors hover:text-gray-900"
+                        />
+                      ),
+                    }}
+                  />
                 </Typography>
               }
               containerProps={{ className: "-ml-2.5" }}
               crossOrigin={undefined}
             />
             <Button variant="gradient" size="lg" className="mt-8" fullWidth>
-              Send Message
+              {t("send-message")}
             </Button>
           </form>
         </div>

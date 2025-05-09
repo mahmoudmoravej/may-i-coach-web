@@ -1,0 +1,8 @@
+{
+  "loading-message": "Loading...",
+  "no-data-message": "No data",
+  "new-vision-message": {
+    "true": "Organizational",
+    "false": "{{dataIndividualFullnameS}}"
+  }
+}

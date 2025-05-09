@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useParams } from "@remix-run/react";
 import { useEffect, useState } from "react";
 
@@ -19,6 +20,8 @@ import { DefaultSkeleton } from "~/components/DefaultSkeleton";
 type ActivityEditFormData = ActivityFormData | null | undefined;
 
 export default function ActivityEdit() {
+  const { t } = useTranslation("routes/_dashboard.activities.$id.edit");
+
   const { id } = useParams();
   if (id == null) throw new Error("id is null");
 
@@ -40,9 +43,9 @@ export default function ActivityEdit() {
   }, [data]);
 
   if (isSaving) return <DefaultSkeleton />;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>{t("loading-message")}</p>;
   if (error) return <p>{JSON.stringify(error)}</p>;
-  if (!activity || !data) return <p>No data</p>;
+  if (!activity || !data) return <p>{t("no-data-message")}</p>;
 
   const title = data.activity.title;
 
@@ -92,7 +95,7 @@ export default function ActivityEdit() {
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        Activity: {title}
+        {t("activity-title-message", { title })}
       </Typography>
       <ActivityForm
         data={activity}

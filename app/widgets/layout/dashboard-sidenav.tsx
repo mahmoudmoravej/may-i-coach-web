@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 
@@ -22,6 +23,8 @@ export function Sidenav({
   brandName: string;
   routes: RouteData[];
 }) {
+  const { t } = useTranslation("widgets/layout");
+
   const nav = useNavigate();
   const { sideNavBarOpen } = useSettingsContext();
 
@@ -48,7 +51,7 @@ export function Sidenav({
             color={sidenavType === "dark" ? "white" : "blue-gray"}
           >
             <img
-              alt="may I coach"
+              alt={t("may-i-coach")}
               src="/images/mayIcoach100.png"
               className="mx-auto inline-block h-12 w-12 "
             />
