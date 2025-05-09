@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import {
@@ -11,6 +12,8 @@ import { useApolloClient } from "@apollo/client/index.js";
 import { useSettingsContext } from "~/contexts";
 
 export function DashboardTopNavbar() {
+  const { t } = useTranslation("widgets/layout");
+
   // const { pathname } = useLocation();
   const apolloClient = useApolloClient();
   const { sideNavBarOpen, setSideNavBarOpen } = useSettingsContext();
@@ -84,7 +87,7 @@ export function DashboardTopNavbar() {
               }}
             >
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-              Sign out
+              {t("sign-out")}
             </Button>
             <IconButton className="grid xl:hidden">
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />

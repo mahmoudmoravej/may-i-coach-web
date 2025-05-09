@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "@remix-run/react";
 import { useState } from "react";
 import * as material from "@material-tailwind/react";
@@ -9,6 +10,8 @@ import { CycleForm, CycleFormData } from "~/components/CycleForm";
 type CycleCreateFormData = CycleFormData;
 
 export default function CycleCreate() {
+  const { t } = useTranslation("routes/_dashboard.cycles.new");
+
   const [cycle, setCycle] = useState<CycleCreateFormData>({
     title: "",
     from: "",
@@ -37,7 +40,8 @@ export default function CycleCreate() {
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        New cycle: {cycle.title}
+        {t("new-cycle-label")}
+        {cycle.title}
       </Typography>
       <CycleForm data={cycle} updateData={setCycle} onSubmit={onSubmit} />
     </Card>

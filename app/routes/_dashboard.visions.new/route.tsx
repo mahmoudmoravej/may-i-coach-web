@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "@remix-run/react";
 import { useState } from "react";
 import * as material from "@material-tailwind/react";
@@ -13,6 +14,8 @@ const { Card, Typography } = material;
 type VisionCreateFormData = VisionFormData;
 
 export default function VisionCreate() {
+  const { t } = useTranslation("routes/_dashboard.visions.new");
+
   const { id: individualId } = useParams();
   const isPersonal = individualId != null;
 
@@ -33,10 +36,10 @@ export default function VisionCreate() {
   const [createMethod] = useCreateVisionMutation();
   const nav = useNavigate();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>{t("loading-message")}</p>;
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (!vision || !data || !data.visionTypes.nodes || !data.cycles.nodes)
-    return <p>No data</p>;
+    return <p>{t("no-data-message")}</p>;
 
   const visionTypes = data.visionTypes.nodes
     .filter(noNull)
@@ -73,11 +76,11 @@ export default function VisionCreate() {
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        New{" "}
-        {vision.isOrganizational
-          ? "Organizational"
-          : data.individual?.fullname + "'s"}{" "}
-        Vision: {getPartOfDescription(vision.description, 20)}
+        {t("new-vision-message", {
+          dataIndividualFullnameS: data.individual?.fullname + "'s",
+          visionIsOrganizational: vision.isOrganizational,
+        })}
+        {getPartOfDescription(vision.description, 20)}
       </Typography>
       <VisionForm
         data={vision}

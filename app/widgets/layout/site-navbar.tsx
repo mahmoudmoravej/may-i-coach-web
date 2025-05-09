@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -22,6 +23,8 @@ export function SiteNavbar({
   routes: siteRouteType[];
   action: any;
 }) {
+  const { t } = useTranslation("widgets/layout");
+
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -101,7 +104,7 @@ export function SiteNavbar({
             rel="noreferrer"
           >
             <Button variant="text" size="small" fullWidth>
-              pro version
+              {t("pro-version")}
             </Button>
           </a>
           {React.cloneElement(action, {

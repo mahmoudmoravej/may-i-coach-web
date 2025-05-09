@@ -1,0 +1,21 @@
+{
+  "may-i-coach": "may I coach",
+  "ai-coaching-assistant": "AI as your coaching assistant!",
+  "landing-page-example": "This is a simple example of a Landing Page you can build using Material Tailwind. It features multiple components based on the Tailwind CSS and Material Design by Google.",
+  "working-with-us": "Working with us is a pleasure",
+  "tooltips-and-popovers": "Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.",
+  "pre-built-pages": " The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go. Just make sure you enable them first via JavaScript.",
+  "read-more": "read more",
+  "card": "Card",
+  "enterprise": "Enterprise",
+  "top-notch-services": "Top Notch Services",
+  "arctic-ocean-ice": "The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.",
+  "record-max-sea-ice": "According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.",
+  "record-min-sea-ice": "Put the potentially record low maximum sea ice extent tihs year down to low ice. According to the National Oceanic and Atmospheric Administration, Ted, Scambos.",
+  "contact-form-response": "Complete this form and we will get back to you in 24 hours.",
+  "full-name": "Full Name",
+  "email-address": "Email Address",
+  "message": "Message",
+  "terms-and-conditions-agreement": "I agree the <0> Terms and Conditions</0>",
+  "send-message": "Send Message"
+}
